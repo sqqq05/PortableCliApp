@@ -8,7 +8,7 @@ using PortableCliApp;
  * their results to the console.
  */
 
-Console.WriteLine("Cross-platform .NET 10 CLI demonstration");
+Console.WriteLine("Jenkins Workshop .NET 10 CLI demonstration");
 Console.WriteLine("========================================");
 Console.WriteLine();
 
