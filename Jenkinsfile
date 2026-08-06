@@ -56,6 +56,28 @@ pipeline {
             }
         }
 
+        stage('Set Build Info') {
+            steps {
+                script {
+                    def commitId = sh(
+                        script: "git rev-parse --short HEAD",
+                        returnStdout: true
+                    ).trim()
+
+                    def commitMsg = sh(
+                        script: "git log -1 --pretty=%s",
+                        returnStdout: true
+                    ).trim()
+
+                    currentBuild.displayName =
+                        "#${env.BUILD_NUMBER} - ${commitId}"
+
+                    currentBuild.description =
+                        commitMsg
+                }
+            }
+        }
+
         stage('Clean') {
             steps {
                 /*
